@@ -1,5 +1,7 @@
 # Capistrano Lazy Templates
 
+[![Gem Version](https://badge.fury.io/rb/capistrano-lazy-templates.svg)](http://badge.fury.io/rb/capistrano-lazy-templates)
+
 Helping tasks to download and upload server files or ERB templates in capistrano  v3
 
 This gem gives capistrano tasks to mantain a set of files to upload and download to the servers, separated by role and stage.
