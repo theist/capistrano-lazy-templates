@@ -1,8 +1,10 @@
-
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'capistrano-lazy-templates/version'
 
 Gem::Specification.new do |s|
   s.name = 'capistrano-lazy-templates'
-  s.version = '0.0.1'
+  s.version = CapistranoLazyTemplates::VERSION
   s.authors = ['Carlos Peñas']
   s.email = ['theistian@gmx.com']
   s.date = Time.now.utc.strftime('%Y-%m-%d')
