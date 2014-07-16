@@ -27,7 +27,9 @@ end
 set :template_dir, 'config/templates'
 set :role_templates, %w(all)
 
+
 namespace :lazy_templates do
+  desc "get a FILE file or directory recursively from server"
   task :get do
     role = ENV['ROLE'] || "all"
     file = ENV['FILE']
@@ -37,6 +39,7 @@ namespace :lazy_templates do
     end
   end
 
+  desc "Get files or directories listed in a FILE filelist"
   task :get_file_list do
     role = ENV['ROLE'] || "all"
     filelist = ENV['FILE']
@@ -52,6 +55,7 @@ namespace :lazy_templates do
     end
   end
 
+  desc "Upload files or templates to specified ROLES"
   task :upload_files do
     roles_array = fetch(:role_templates)
     roles_array = [ENV['ROLE']] if ENV['ROLE'];
