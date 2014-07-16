@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.summary = 'Cap v3 ERB templates upload/download'
   s.description = 'lazy template upload/download for capistrano 3'
   s.license = 'GPLv3'
+  s.homepage = 'https://github.com/theist/capistrano-lazy-templates'
   s.add_runtime_dependency 'capistrano', '~> 3', '> 3'
 
 
