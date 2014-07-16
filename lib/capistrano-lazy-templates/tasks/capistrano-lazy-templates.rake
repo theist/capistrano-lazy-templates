@@ -4,7 +4,7 @@ def get_remote_file(file,local_base)  ## Or dir!
     if test("[ -d #{file} ]")
       if test("[ -r #{file} ]")
         file = file + "/" unless file =~ /\/$/
-        contents = capture :ls, file
+        contents = capture :ls, "-1 #{file}"
         contents.each_line do |sub_file|
           get_remote_file(file + sub_file ,local_base)
         end
