@@ -14,5 +14,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'capistrano', '~> 3', '> 3'
 
 
-  s.files = []
+  s.files = `git ls-files`.split($/)
+  s.require_paths = ['lib']
 end
