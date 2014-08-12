@@ -62,11 +62,9 @@ namespace :lazy_templates do
     roles_array.each do |role|
       on roles(role) do
         local_base = fetch(:template_dir) + "/" + fetch(:stage).to_s + '/' + role
-        info "role #{role} #{local_base}"
         Dir["#{local_base}/**/*"].each do |file|
           if File.file?(file)
             if File.extname(file) == '.erb'
-              binding.pry
               erb = File.read(file)
               random_foo = (1000000000 * rand).round.to_s
               res = ERB.new(erb).result(binding)
