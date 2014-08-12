@@ -84,4 +84,21 @@ namespace :lazy_templates do
       end
     end
   end
+
+  desc "Updates only existing files"
+  task :update_files do
+    roles_array = fetch(:role_templates)
+    roles_array = [ENV['ROLE']] if ENV['ROLE']
+    roles_array.each do |role|
+      on roles(role) do
+        local_base = fetch(:template_dir) + "/" + fetch(:stage).to_s + '/' + role
+        Dir["#{local_base}/**/*"].each do |file|
+          if File.file?(file)
+            get_remote_file(file.gsub(/^#{local_base}/,''),local_base)
+          end
+        end
+      end
+    end
+  end
+
 end

@@ -23,7 +23,6 @@ Once installed uning bundler an after creating a deploy recipe with capistrano, 
 
 ## Configuration
 
-
 There are two variables to set and configure the behavior if this gem
 
     set :template_dir, 'config/templates'
@@ -44,7 +43,7 @@ Once the gem is properly loaded it share three tasks on the capistrano_lazy_temp
 
 ### Downloading Files
 
-There are two task for downloading files. The `get` task lets you to specify a file (or directory) you want to take from the servers. 
+There are three task for downloading files. The `get` task lets you to specify a file (or directory) you want to take from the servers.
 
     cap production lazy_templates:get FILE=/etc/nginx/nginx.conf ROLE=web
 
@@ -58,15 +57,19 @@ the path config/templates/production/web must exists before download, but from t
 
 #### Directories
 
-If the file specified in `FILE` environment variable is a directory in the target server, the task will recursively download all the regular files it finds from that path. 
+If the file specified in `FILE` environment variable is a directory in the target server, the task will recursively download all the regular files it finds from that path.
 
 #### File Lists
 
 Instead of specify manually each file you want to download you can use the task `:lazy_templates:get_file_list` using that instead, the value you specify in `FILE` environment variable will be interpreted as a local file for read the files or directories to download, just like the `lazy_templates:get` task.
 
+#### Update Existing Files
+
+You can update the existing files in the template dir using `:lazy_templates:update_files` capistrano will download the files which match the existing ones in the local repository.
+
 #### Limitations
 
-- `get` and `get_file_list` tasks cannot read nothing that the deploy user cannot read, so if it finds a file that won't be readed it will skip it and continue downloading the next one. 
+- `get`, `get_file_list` and `update_files` tasks cannot read nothing that the deploy user cannot read, so if it finds a file that won't be readed it will skip it and continue downloading the next one. 
 
 - These task will not download empty directories or directories without enough permissions to be traversed.
 
