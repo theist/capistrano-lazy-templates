@@ -1,5 +1,5 @@
-require 'capistrano-lazy-templates/version'
+require 'capistrano/lazy-templates/version'
 
-load File.expand_path("../capistrano-lazy-templates/tasks/capistrano-lazy-templates.rake", __FILE__)
+load File.expand_path("../capistrano/tasks/lazy-templates.rake", __FILE__)
 
 
