@@ -24,8 +24,12 @@ def get_remote_file(file,local_base)  ## Or dir!
   end
 end
 
-set :template_dir, 'config/templates'
-set :role_templates, %w(all)
+namespace :load do
+  task :defaults do
+    set :template_dir, 'config/templates'
+    set :role_templates, %w(all)
+  end
+end
 
 
 namespace :lazy_templates do
