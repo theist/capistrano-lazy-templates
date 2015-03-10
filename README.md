@@ -19,7 +19,7 @@ Add it to the gemfile, better suits on the development or deployment group
 
 Once installed uning bundler an after creating a deploy recipe with capistrano, edit the Capfile and add a line to load gem's tasks
 
-    require 'capistrano/lazy-templates'
+    require 'capistrano-lazy-templates'
 
 ## Configuration
 
