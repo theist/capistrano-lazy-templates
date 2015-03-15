@@ -16,7 +16,7 @@ namespace :lazy_templates do
     role = ENV['ROLE'] || "all"
     file = ENV['FILE']
     local_base = fetch(:template_dir) + "/" + fetch(:stage).to_s + '/' + role
-    on roles(role) do
+    on primary(role.to_sym) do
       get_remote_file(file,local_base)
     end
   end
@@ -26,7 +26,7 @@ namespace :lazy_templates do
     role = ENV['ROLE'] || "all"
     filelist = ENV['FILE']
     local_base = fetch(:template_dir) + "/" + fetch(:stage).to_s + '/' + role
-    on roles(role) do
+    on primary(role.to_sym) do
       if File::exists?(filelist)
         File::new(filelist).readlines.each do |file|
           get_remote_file(file,local_base)
@@ -42,7 +42,7 @@ namespace :lazy_templates do
     roles_array = fetch(:role_templates)
     roles_array = [ENV['ROLE']] if ENV['ROLE'];
     roles_array.each do |role|
-      on roles(role) do
+      on roles(role.to_sym) do
         local_base = fetch(:template_dir) + "/" + fetch(:stage).to_s + '/' + role
         Dir["#{local_base}/**/*"].each do |file|
           if File.file?(file)
@@ -70,7 +70,7 @@ namespace :lazy_templates do
     roles_array = fetch(:role_templates)
     roles_array = [ENV['ROLE']] if ENV['ROLE']
     roles_array.each do |role|
-      on roles(role) do
+      on primary(role.to_sym) do
         local_base = fetch(:template_dir) + "/" + fetch(:stage).to_s + '/' + role
         Dir["#{local_base}/**/*"].each do |file|
           if File.file?(file)
