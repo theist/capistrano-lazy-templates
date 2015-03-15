@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = 'lazy template upload/download for capistrano 3'
   s.license = 'GPLv3'
   s.homepage = 'https://github.com/theist/capistrano-lazy-templates'
-  s.add_runtime_dependency 'capistrano', '~> 3', '> 3'
+  s.add_runtime_dependency 'capistrano', '~> 3.2'
 
 
   s.files = `git ls-files`.split($/)
